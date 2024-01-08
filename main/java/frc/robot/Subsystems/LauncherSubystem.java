@@ -2,10 +2,11 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 
-public class LauncherSubystem {
+public class LauncherSubystem extends SubsystemBase{
     VictorSPX downMotor = new VictorSPX(Constants.MOTOR_DOWN_LAUCHER_ID);
 
     VictorSPX up1Motor = new VictorSPX(Constants.MOTOR_UP1_LAUNCHER_ID);
