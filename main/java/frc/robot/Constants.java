@@ -17,9 +17,10 @@ public final class Constants {
     public static final int MOTOR_LEFT_ID = 4;
     public static final int MOTOR_RIGHT2_ID = 1;
     public static final int MOTOR_LEFT2_ID = 3;
-    public static final int MOTOR_RAIL = 8;
-    public static final int MOTOR_CLAW = 12;
-    public static final int MOTOR_ARM = 3;
+    public static final int MOTOR_ANG_ID = -1;
+    public static final int MOTOR_DOWN_LAUCHER_ID = -1;
+    public static final int MOTOR_UP1_LAUNCHER_ID = -1;
+    public static final int MOTOR_UP2_LAUNCHER_ID = -1;
 
     public static final int CONTROLE1_ID = 0;
     public static final int CONTROLE2_ID = 1;
