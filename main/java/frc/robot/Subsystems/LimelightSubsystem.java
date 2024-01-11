@@ -10,11 +10,14 @@ public class LimelightSubsystem {
     NetworkTableEntry ty = lime.getEntry("ty");
     NetworkTableEntry ta = lime.getEntry("ta");
 
-    private double x = tx.getDouble(0.0);
-    private double y = ty.getDouble(0.0);
-    private double a = ta.getDouble(0.0);
+    private double x = 0;
+    private double y = 0;
+    private double a = 0;
 
     public LimelightSubsystem(){
+        x = tx.getDouble(0.0);
+        y = ty.getDouble(0.0);
+        a = ta.getDouble(0.0);
     }
 
     public double getLimeXValue(){

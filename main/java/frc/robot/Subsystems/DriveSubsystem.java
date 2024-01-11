@@ -10,6 +10,9 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.hal.simulation.AnalogInDataJNI;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 import frc.robot.Utils.Driver;
@@ -19,6 +22,10 @@ public class DriveSubsystem extends SubsystemBase {
   private VictorSPX motor_right2 = new VictorSPX(Constants.MOTOR_RIGHT2_ID);
   private VictorSPX motor_left = new VictorSPX(Constants.MOTOR_LEFT_ID);
   private VictorSPX motor_left2 = new VictorSPX(Constants.MOTOR_LEFT2_ID);
+
+  private AnalogInput ultrasonic = new AnalogInput(0);
+  private double ultrasonicRange = 0;
+  
   private Driver m_Driver;
   private Timer timer = new Timer();
   double powers[] = {0,0};
@@ -31,6 +38,8 @@ public class DriveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    ultrasonicRange = (ultrasonic.getValue() * (5/RobotController.getVoltage5V()))/8;
+    
   }
  
   public void defaultDrive(double leftStickX, double leftStickY,double rightStickX,double rightStickY, double lt, double rt,double spd){
@@ -81,5 +90,9 @@ public class DriveSubsystem extends SubsystemBase {
     this.motor_right.setNeutralMode(NeutralMode.Brake);
     this.motor_left2.setNeutralMode(NeutralMode.Brake);
     this.motor_right2.setNeutralMode(NeutralMode.Brake);
+  }
+
+  public double getUltrasonicDistance(){
+    return ultrasonicRange;
   }
 }
