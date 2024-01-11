@@ -10,7 +10,6 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.hal.simulation.AnalogInDataJNI;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
@@ -25,7 +24,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   private AnalogInput ultrasonic = new AnalogInput(0);
   private double ultrasonicRange = 0;
-  
+
   private Driver m_Driver;
   private Timer timer = new Timer();
   double powers[] = {0,0};

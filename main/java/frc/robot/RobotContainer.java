@@ -23,7 +23,7 @@ public class RobotContainer {
   public Joystick driverController = new Joystick(Constants.CONTROLE1_ID);
   public Joystick systemsController = new Joystick(Constants.CONTROLE2_ID);
   private static DriveSubsystem robotDrive = new DriveSubsystem();
-  private static CameraSubsystem cam = new CameraSubsystem();
+  //private static CameraSubsystem cam = new CameraSubsystem();
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   JoystickButton lb = new JoystickButton(driverController, 5);
   double spd = 0.75;
