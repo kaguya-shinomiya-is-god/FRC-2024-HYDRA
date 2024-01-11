@@ -3,21 +3,26 @@ package frc.robot.Subsystems;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class LimelightSubsystem {
+public class LimelightSubsystem extends SubsystemBase{
     NetworkTable lime = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = lime.getEntry("tx");
     NetworkTableEntry ty = lime.getEntry("ty");
     NetworkTableEntry ta = lime.getEntry("ta");
 
-    private double x = 0;
-    private double y = 0;
-    private double a = 0;
+    private double x = tx.getDouble(0.0);
+    private double y = ty.getDouble(0.0);
+    private double a = ta.getDouble(0.0);
 
     public LimelightSubsystem(){
-        x = tx.getDouble(0.0);
-        y = ty.getDouble(0.0);
-        a = ta.getDouble(0.0);
+    }
+
+    @Override
+    public void periodic(){
+       x  = tx.getDouble(0.0);
+       y =  ty.getDouble(0.0);
+       a = ta.getDouble(0.0);
     }
 
     public double getLimeXValue(){
