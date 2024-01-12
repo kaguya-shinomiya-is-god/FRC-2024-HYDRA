@@ -60,6 +60,11 @@ public class DriveSubsystem extends SubsystemBase {
     }  
     return a;
   }
+
+  public void motorPower(double mL, double mR){
+    double[] motorVector = {mL,mR};
+    setPower(motorVector);
+  }
   
   public void setPower(double powers[]){
     if(powers[0] == 0 && powers[1] == 0){

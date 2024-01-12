@@ -25,6 +25,11 @@ public class LimelightSubsystem extends SubsystemBase{
        a = ta.getDouble(0.0);
     }
 
+    public boolean getTargetLime(){
+        if(a > 0) return true;
+        return false;
+    }
+
     public double getLimeXValue(){
         return x;
     }

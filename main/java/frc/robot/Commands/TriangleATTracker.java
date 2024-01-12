@@ -7,7 +7,7 @@ public class TriangleATTracker extends CommandBase{
     private final DriveSubsystem drive;
     private double angle = 0;
     private double xDistance = 0;
-    private double ultrasonicHip = 0;
+    private double hip = 0;
 
     public TriangleATTracker(DriveSubsystem subsystem){
         drive = subsystem;
