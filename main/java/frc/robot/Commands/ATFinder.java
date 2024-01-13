@@ -1,6 +1,7 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Constants;
 import frc.robot.Subsystems.DriveSubsystem;
 import frc.robot.Subsystems.LimelightSubsystem;
@@ -24,17 +25,21 @@ public class ATFinder extends CommandBase{
     public void execute(){
         find = lime.getTargetLime();
 
-        if(!find){
+        if(!find)
             drive.motorPower(Constants.kNormalSpd, -Constants.kNormalSpd);
-        }
-        else {
-            drive.motorPower(0, 0);
+        else 
             isFinished();
-        }
+
+    }
+
+    @Override
+    public void end(boolean interrupted){
+         
     }
 
     @Override
     public boolean isFinished(){
+        drive.motorPower(0, 0);
         return true;
     }
 }

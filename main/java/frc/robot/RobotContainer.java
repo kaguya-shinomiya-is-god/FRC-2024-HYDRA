@@ -23,6 +23,7 @@ public class RobotContainer {
   public Joystick driverController = new Joystick(Constants.CONTROLE1_ID);
   public Joystick systemsController = new Joystick(Constants.CONTROLE2_ID);
   private static DriveSubsystem robotDrive = new DriveSubsystem();
+  private static LimelightSubsystem limelight = new LimelightSubsystem();
   //private static CameraSubsystem cam = new CameraSubsystem();
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   JoystickButton lb = new JoystickButton(driverController, 5);
@@ -50,9 +51,8 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand(){
-    return Commands.print("No Autonomous");
+    return new ATFinder(limelight, robotDrive);
   }
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    * 
