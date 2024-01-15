@@ -9,11 +9,14 @@ import frc.robot.Subsystems.LimelightSubsystem;
 public class ATFinder extends CommandBase{
     private LimelightSubsystem lime;
     private DriveSubsystem drive;
+    private boolean lSide = false;
     private boolean find = false;
 
     public ATFinder(LimelightSubsystem limeSub, DriveSubsystem driveSub){
         this.lime = limeSub;
         this.drive = driveSub;
+
+        addRequirements(lime,drive);
     }
 
     @Override

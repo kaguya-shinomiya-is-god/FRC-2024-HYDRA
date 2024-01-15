@@ -7,6 +7,7 @@ package frc.robot.Subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 import frc.robot.Utils.Driver;
+import edu.wpi.first.wpilibj.SPI;
 
 public class DriveSubsystem extends SubsystemBase {
   private VictorSPX motor_right = new VictorSPX(Constants.MOTOR_RIGHT_ID);
@@ -24,6 +26,8 @@ public class DriveSubsystem extends SubsystemBase {
 
   private AnalogInput ultrasonic = new AnalogInput(0);
   private double ultrasonicRange = 0;
+
+  public AHRS navx = new AHRS(SPI.Port.kMXP);
 
   private Driver m_Driver;
   private Timer timer = new Timer();
