@@ -15,7 +15,7 @@ import frc.robot.Commands.AutoLocomotion.ATFinder;
 import frc.robot.Commands.Joysticks.DefaultDrive;
 import frc.robot.Subsystems.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
-import frc.robot.Subsystems.ScoreSystem.LimelightSubsystem;
+import frc.robot.Subsystems.Sensors.LimelightSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a

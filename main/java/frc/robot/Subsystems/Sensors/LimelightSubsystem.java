@@ -1,4 +1,4 @@
-package frc.robot.Subsystems.ScoreSystem;
+package frc.robot.Subsystems.Sensors;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
