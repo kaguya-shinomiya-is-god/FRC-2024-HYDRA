@@ -1,6 +1,6 @@
-package frc.robot.Commands;
+package frc.robot.Commands.AutoLocomotion;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Subsystems.CameraSubsystem;
+import frc.robot.Subsystems.ScoreSystem.CameraSubsystem;
 
 public class CameraServer extends CommandBase {
   private final CameraSubsystem m_subsystem;

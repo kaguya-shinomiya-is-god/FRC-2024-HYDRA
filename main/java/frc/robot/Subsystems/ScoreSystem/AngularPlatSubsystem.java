@@ -1,4 +1,4 @@
-package frc.robot.Subsystems;
+package frc.robot.Subsystems.ScoreSystem;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;

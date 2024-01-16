@@ -1,4 +1,4 @@
-package frc.robot.Subsystems;
+package frc.robot.Subsystems.ScoreSystem;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Point;

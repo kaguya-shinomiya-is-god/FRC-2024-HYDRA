@@ -11,7 +11,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.*;
+import frc.robot.Commands.AutoLocomotion.ATFinder;
+import frc.robot.Commands.Joysticks.DefaultDrive;
 import frc.robot.Subsystems.*;
+import frc.robot.Subsystems.Locomotion.DriveSubsystem;
+import frc.robot.Subsystems.ScoreSystem.LimelightSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a

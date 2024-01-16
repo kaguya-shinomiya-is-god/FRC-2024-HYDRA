@@ -1,10 +1,10 @@
-package frc.robot.Commands;
+package frc.robot.Commands.AutoLocomotion;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Constants;
-import frc.robot.Subsystems.DriveSubsystem;
-import frc.robot.Subsystems.LimelightSubsystem;
+import frc.robot.Subsystems.Locomotion.DriveSubsystem;
+import frc.robot.Subsystems.ScoreSystem.LimelightSubsystem;
 
 public class ATFinder extends CommandBase{
     private LimelightSubsystem lime;

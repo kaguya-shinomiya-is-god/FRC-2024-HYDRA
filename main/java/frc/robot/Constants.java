@@ -21,6 +21,8 @@ public final class Constants {
     public static final int MOTOR_DOWN_LAUCHER_ID = -1;
     public static final int MOTOR_UP1_LAUNCHER_ID = -1;
     public static final int MOTOR_UP2_LAUNCHER_ID = -1;
+    public static final int SOLENOID_CLIMBING_FOWARD_ID = 15;
+    public static final int SOLENOID_CLIMBING_BACK_ID = 8;
 
     public static final int CONTROLE1_ID = 0;
     public static final int CONTROLE2_ID = 1;

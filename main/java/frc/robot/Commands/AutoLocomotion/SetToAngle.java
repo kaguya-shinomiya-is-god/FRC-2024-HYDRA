@@ -1,8 +1,8 @@
-package frc.robot.Commands;
+package frc.robot.Commands.AutoLocomotion;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.Subsystems.DriveSubsystem;
+import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 
 public class SetToAngle extends CommandBase{
     private double angle,dAngle,updatedAngle = 0;
@@ -28,11 +28,12 @@ public class SetToAngle extends CommandBase{
         if(Math.abs(angleSpd) > Constants.kNormalSpd) Math.copySign(Constants.kNormalSpd, angleSpd);
         driver.motorPower(angleSpd,-angleSpd);
         dAngle = angle - updatedAngle;
+        if(Math.abs(dAngle) <= 5) isFinished();
     }
 
     @Override
     public void end(boolean interrupted){
-
+        driver.motorPower(0,0);
     }
 
     @Override

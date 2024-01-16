@@ -1,11 +1,10 @@
-package frc.robot.Commands;
+package frc.robot.Commands.AutoLocomotion;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Subsystems.DriveSubsystem;
+import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 
 public class TriangleATTracker extends CommandBase{
     private final DriveSubsystem drive;
-    private double angle = 0;
     private double xDistance = 0;
     private double hip = 0;
 
