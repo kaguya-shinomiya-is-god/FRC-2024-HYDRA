@@ -25,10 +25,15 @@ public class SetToAngle extends CommandBase{
     public void execute(){
         updatedAngle = driver.navx.getAngle();
         angleSpd = (dAngle/360)*4;
-        if(Math.abs(angleSpd) > Constants.kNormalSpd) Math.copySign(Constants.kNormalSpd, angleSpd);
+
+        if(Math.abs(angleSpd) > Constants.kNormalSpd) 
+        Math.copySign(Constants.kNormalSpd, angleSpd);
+
         driver.motorPower(angleSpd,-angleSpd);
         dAngle = angle - updatedAngle;
-        if(Math.abs(dAngle) <= 5) isFinished();
+
+        if(Math.abs(dAngle) <= 5) 
+        isFinished();
     }
 
     @Override
@@ -39,6 +44,5 @@ public class SetToAngle extends CommandBase{
     @Override
     public boolean isFinished(){
         return true;
-
     }
 }

@@ -29,6 +29,7 @@ public class Driver {
     SmartDashboard.putNumber("mag2:", mag_right);
     SmartDashboard.putNumber("mag:", mag_left);
     SmartDashboard.putNumber("sin2:", seno_right);
+    
     if (rt != 0) {
       if (leftStick_x >= 0.1) {
         if (leftStick_x <= 0.04) {
@@ -128,63 +129,6 @@ public class Driver {
     return powers;
   }
 
-  // public void quadCalc() {
-  // double x = this.leftStick_x;
-  // double y = this.leftStick_y;
-  // double mag_left = this.mag_left;
-  // // Quadrante 1
-  // if (y >= 0 && x >= 0) {
-  // this.mL = mag_left; // Constante
-  // this.mR = (2 * seno_left - 1) * mag_left; // Varia
-  // // Quadrante 2
-  // } else if (y >= 0 && x <= 0) {
-  // this.mL = (2 * seno_left - 1) * mag_left; // Varia
-  // this.mR = mag_left; // Constante
-  // // Quadrante 3
-  // } else if (y < 0 && x < 0) {
-  // this.mL = (2 * seno_left + 1) * mag_left; // Varia
-  // this.mR = -mag_left; // Constante
-  // // Quadrante 4
-  // } else if (y < 0 && x >= 0) {
-  // this.mL = -mag_left; // Constante
-  // this.mR = (2 * seno_left + 1) * mag_left; // Varia
-  // }
-  // }
-
-  // public void triggerCalc() {
-  // if (Math.abs(leftStick_x) < 0.04)
-  // leftStick_x = 0;
-
-  // if (rt != 0) {
-  // if (leftStick_x >= 0) {
-  // this.mL = rt;
-  // this.mR = rt * (1 - leftStick_x);
-  // } else if (leftStick_x < 0) {
-  // this.mL = rt * (1 + leftStick_x);
-  // this.mR = rt;
-  // }
-  // } else if (lt != 0) {
-  // if (leftStick_x >= 0) {
-  // lt = -lt;
-  // this.mL = lt * (1 - leftStick_x);
-  // this.mR = lt;
-  // } else if (leftStick_x < 0) {
-  // this.mL = lt;
-  // this.mR = lt * (1 + leftStick_x);
-  // }
-  // }
-  // }
-
-  // public void movementCalc() {
-  // // Verificação do analogico esquerdo
-  // if (minMethod(mag_left) != 0) {
-  // // Calculo dos quadrantes
-  // quadCalc();
-  // } else if (minMethod(mag_right) != 0) {
-  // // Calculo dos quadrantes
-  // // reverseQuadCalc();
-  // }
-  // }
 
   private void resetAxis() {
     // Verificação de inatividade dos analogicos

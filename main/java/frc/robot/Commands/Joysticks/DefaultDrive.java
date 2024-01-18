@@ -1,7 +1,3 @@
-// // Copyright (c) FIRST and other WPILib contributors.
-// // Open Source Software; you can modify and/or share it under the terms of
-// // the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.Commands.Joysticks;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -18,19 +14,14 @@ public class DefaultDrive extends CommandBase {
   private int pov;
 
   public DefaultDrive(DriveSubsystem subsystem,Joystick driverController) {
-    // Use addRequirements() here to declare subsystem dependencies.
     s_drive = subsystem;
     addRequirements(s_drive);
     this.driverController = driverController;
   }
 
-  // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
+  public void initialize() {}
 
-  }
-
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute(){
     boolean a = driverController.getRawButton(Constants.BUTTON_A);
@@ -52,13 +43,9 @@ public class DefaultDrive extends CommandBase {
       s_drive.setPower(Driver.povCalc(pov,spd));
   }
 
-  // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end(boolean interrupted) {}
 
-  }
-
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false; 
