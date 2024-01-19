@@ -12,11 +12,13 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 import frc.robot.Utils.Driver;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.CounterBase;
 
 public class DriveSubsystem extends SubsystemBase {
   private VictorSPX motor_right = new VictorSPX(Constants.MOTOR_RIGHT_ID);
@@ -29,6 +31,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public AHRS navx = new AHRS(SPI.Port.kMXP);
 
+  private final Encoder encoder = new Encoder(1, 2);
   private Driver m_Driver;
   private Timer timer = new Timer();
   double powers[] = {0,0};
@@ -36,12 +39,15 @@ public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveTrain. */
   public DriveSubsystem() {
     init_motors();
+    encoder.setDistancePerPulse(36);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
     ultrasonicRange = (ultrasonic.getValue() * (5/RobotController.getVoltage5V()))/8;
+
+    
     
   }
  
@@ -102,5 +108,13 @@ public class DriveSubsystem extends SubsystemBase {
 
   public double getUltrasonicDistance(){
     return ultrasonicRange;
+  }
+ 
+  public double getEnconderDistance(){
+    return encoder.getDistance();
+  }
+
+  public void resetEncoder(){
+    encoder.reset();
   }
 }
