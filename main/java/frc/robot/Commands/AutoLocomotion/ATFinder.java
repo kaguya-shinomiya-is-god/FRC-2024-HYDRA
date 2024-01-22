@@ -42,6 +42,6 @@ public class ATFinder extends CommandBase{
     @Override
     public boolean isFinished(){
         drive.motorPower(0, 0);
-        return true;
+        return false;
     }
 }

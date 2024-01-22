@@ -1,5 +1,6 @@
 package frc.robot.Subsystems.ScoreSystem;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -21,5 +22,14 @@ public class LauncherSubystem extends SubsystemBase{
         up1Motor.setInverted(true);
         up2Motor.setInverted(false);
         up2Motor.follow(up1Motor);
+        downMotor.follow(up1Motor);
+    }
+
+    public void launcherShooter(){
+        up1Motor.set(ControlMode.PercentOutput, Constants.kFastSpd);
+    }
+
+    public void launcherShooterOff(){
+        up1Motor.set(ControlMode.PercentOutput, 0);
     }
 }
