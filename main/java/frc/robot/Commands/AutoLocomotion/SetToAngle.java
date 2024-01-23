@@ -3,16 +3,19 @@ package frc.robot.Commands.AutoLocomotion;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
+import frc.robot.Subsystems.Sensors.GyroSubsystem;
 
 public class SetToAngle extends CommandBase{
     private double angle,dAngle,updatedAngle = 0;
     private double angleSpd = 0;
     private DriveSubsystem driver;
+    private GyroSubsystem navx;
 
-    public SetToAngle(DriveSubsystem subsystem, double toAngle){
+    public SetToAngle(DriveSubsystem subsystem, GyroSubsystem gyro, double toAngle){
         this.driver = subsystem;
         this.angle = toAngle;
-        addRequirements(driver);
+        this.navx = gyro;
+        addRequirements(driver, navx);
     }
 
     @Override

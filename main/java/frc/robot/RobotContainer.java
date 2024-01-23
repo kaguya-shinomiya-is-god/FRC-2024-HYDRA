@@ -8,17 +8,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.*;
-import frc.robot.Commands.AutoLocomotion.ATFinder;
-import frc.robot.Commands.Joysticks.DefaultDrive;
-import frc.robot.Commands.Joysticks.DefaultSystem;
+import frc.robot.Commands.AutoLocomotion.*;
+import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
-import frc.robot.Subsystems.ScoreSystem.AngularPlatSubsystem;
-import frc.robot.Subsystems.ScoreSystem.CaptureSubsytem;
-import frc.robot.Subsystems.ScoreSystem.ClimbSubystem;
-import frc.robot.Subsystems.ScoreSystem.LauncherSubystem;
-import frc.robot.Subsystems.Sensors.CameraSubsystem;
-import frc.robot.Subsystems.Sensors.LimelightSubsystem;
+import frc.robot.Subsystems.ScoreSystem.*;
+import frc.robot.Subsystems.Sensors.*;
 
 public class RobotContainer {
 
@@ -33,20 +28,23 @@ public class RobotContainer {
   private static LauncherSubystem LancamentoSub = new LauncherSubystem();
 
   private static LimelightSubsystem limelightSub = new LimelightSubsystem();
+  private static GyroSubsystem gyro = new GyroSubsystem();
+  private static EncoderSubsytem encoder = new EncoderSubsytem();
   private static CameraSubsystem cam = new CameraSubsystem();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   
   double spd = 0.75;
-
+  
   
   public RobotContainer() {
                                                                                                                                                                                                                                                                                                                                                                  
     configureButtonBindings();
-
     robotDrive.setDefaultCommand(Commands.parallel(
       new DefaultDrive(robotDrive, driverController),
-      new DefaultSystem (AngSub, ColetaSub, EscaladaSub, LancamentoSub, systemsController)));
+      new DefaultSystem(AngSub, ColetaSub, EscaladaSub, LancamentoSub, systemsController),
+      new CameraServer(cam)
+      ));
 
   }
 
@@ -55,6 +53,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand(){
-    return new ATFinder(limelightSub, robotDrive);
+    return new SetToAngle(robotDrive, gyro, 45);
   }
+
 }

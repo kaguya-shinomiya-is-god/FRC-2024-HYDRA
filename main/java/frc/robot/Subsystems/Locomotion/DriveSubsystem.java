@@ -110,11 +110,5 @@ public class DriveSubsystem extends SubsystemBase {
     return ultrasonicRange;
   }
  
-  public double getEnconderDistance(){
-    return encoder.getDistance();
-  }
-
-  public void resetEncoder(){
-    encoder.reset();
-  }
+  
 }

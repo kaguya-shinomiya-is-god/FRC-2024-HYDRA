@@ -18,6 +18,9 @@ public final class Constants {
 
     public static final int CONTROLE1_ID = 0;
     public static final int CONTROLE2_ID = 1;
+
+    public static final int ENCODER_A_PORT = 0;
+    public static final int ENCODER_B_PORT = 0;
     
     public static final int LT = 2;
     public static final int RT = 3;

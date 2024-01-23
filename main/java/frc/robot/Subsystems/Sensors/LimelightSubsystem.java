@@ -15,8 +15,7 @@ public class LimelightSubsystem extends SubsystemBase{
     private double y = ty.getDouble(0.0);
     private double a = ta.getDouble(0.0);
 
-    public LimelightSubsystem(){
-    }
+    public LimelightSubsystem(){}
 
     @Override
     public void periodic(){
