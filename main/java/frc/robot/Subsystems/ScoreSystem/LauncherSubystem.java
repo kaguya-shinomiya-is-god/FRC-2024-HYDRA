@@ -26,7 +26,7 @@ public class LauncherSubystem extends SubsystemBase{
     }
 
     public void launcherShooter(){
-        up1Motor.set(ControlMode.PercentOutput, Constants.kFastSpd);
+        up1Motor.set(ControlMode.PercentOutput, Constants.kShootSpd);
     }
 
     public void launcherShooterOff(){

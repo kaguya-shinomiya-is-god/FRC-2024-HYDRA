@@ -41,5 +41,7 @@ public final class Constants {
     public static final double kFastSpd = 1;
     public static final double kNormalSpd = 0.5;
     public static final double kSlowSpd = 0.25;
+    public static final double kCaptureSpd = 0.3;
+    public static final double kShootSpd = 0.8;
        
 }

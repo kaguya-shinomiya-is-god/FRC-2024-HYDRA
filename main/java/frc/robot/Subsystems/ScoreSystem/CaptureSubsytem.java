@@ -1,5 +1,3 @@
-
-
 package frc.robot.Subsystems.ScoreSystem;
 
 import com.revrobotics.CANSparkMax;
@@ -20,7 +18,7 @@ public class CaptureSubsytem extends SubsystemBase {
 }
 
 public void getNote(){
-  upMotor.set(Constants.kNormalSpd);
+  upMotor.set(Constants.kCaptureSpd);
 }
 
 public void getOff(){

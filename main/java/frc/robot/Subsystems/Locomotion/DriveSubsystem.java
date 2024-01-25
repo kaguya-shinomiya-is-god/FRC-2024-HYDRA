@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 import frc.robot.Utils.Driver;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.CounterBase;
 
 public class DriveSubsystem extends SubsystemBase {
   private VictorSPX motor_right = new VictorSPX(Constants.MOTOR_RIGHT_ID);
