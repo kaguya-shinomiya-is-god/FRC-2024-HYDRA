@@ -6,11 +6,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Commands.*;
 import frc.robot.Commands.AutoLocomotion.*;
 import frc.robot.Commands.Joysticks.*;
-import frc.robot.Subsystems.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
 import frc.robot.Subsystems.Sensors.*;
@@ -23,14 +22,14 @@ public class RobotContainer {
   private static DriveSubsystem robotDrive = new DriveSubsystem();
   
   private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
-  private static CaptureSubsytem ColetaSub = new CaptureSubsytem();
-  private static ClimbSubystem EscaladaSub = new ClimbSubystem();
-  private static LauncherSubystem LancamentoSub = new LauncherSubystem();
+  private static CaptureSubsytem capture = new CaptureSubsytem();
+  //private static ClimbSubystem EscaladaSub = new ClimbSubystem();
+  private static LauncherSubystem shooter = new LauncherSubystem();
 
-  private static LimelightSubsystem limelightSub = new LimelightSubsystem();
-  private static GyroSubsystem gyro = new GyroSubsystem();
+  //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
+  //private static GyroSubsystem gyro = new GyroSubsystem();
   private static EncoderSubsytem encoder = new EncoderSubsytem();
-  private static CameraSubsystem cam = new CameraSubsystem();
+  //private static CameraSubsystem cam = new CameraSubsystem();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   
@@ -40,20 +39,31 @@ public class RobotContainer {
   public RobotContainer() {
                                                                                                                                                                                                                                                                                                                                                                  
     configureButtonBindings();
-    robotDrive.setDefaultCommand(Commands.parallel(
-      new DefaultDrive(robotDrive, driverController),
-      new DefaultSystem(AngSub, ColetaSub, EscaladaSub, LancamentoSub, systemsController),
-      new CameraServer(cam)
-      ));
+    robotDrive.setDefaultCommand(
+      new DefaultDrive(robotDrive, driverController));
 
   }
 
   private void configureButtonBindings() {
     // CONFIGURAR O QUE CADA BOTÃO FAZ
+
+    new JoystickButton(systemsController, Constants.BUTTON_A)
+      .onTrue(new InstantCommand(() -> capture.getNote()))
+      .onFalse(new InstantCommand(() -> capture.getOff()));
+
+    new JoystickButton(systemsController, Constants.BUTTON_X)
+      .onTrue(new InstantCommand(() -> shooter.launcherShooter()))
+      .onFalse(new InstantCommand(() -> shooter.launcherShooterOff()));
+    
+    new JoystickButton(systemsController, Constants.LB)
+      .onTrue(new InstantCommand(() -> capture.spitNote()))
+      .onFalse(new InstantCommand(() -> capture.getOff()));
+
+
   }
 
   public Command getAutonomousCommand(){
-    return new SetToAngle(robotDrive, gyro, 45);
+    return null;
   }
 
 }

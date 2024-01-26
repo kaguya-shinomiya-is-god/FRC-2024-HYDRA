@@ -93,7 +93,7 @@ public class DriveSubsystem extends SubsystemBase {
   private void init_motors(){
     // this.motor_right2.follow(motor_right);
     // this.motor_left2.follow(motor_left);
-    this.motor_left.setInverted(true);
+    this.motor_left.setInverted(false);
     this.motor_left2.setInverted(false);
     this.motor_right.setInverted(true);
     this.motor_right2.setInverted(true);

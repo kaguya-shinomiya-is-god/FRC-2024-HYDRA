@@ -8,7 +8,6 @@ import frc.robot.Constants;
 
 public class ClimbSubystem extends SubsystemBase{
     
-    // Pneumatic System
     private Solenoid climbLeftF,climbLeftR;
     
     public ClimbSubystem(){

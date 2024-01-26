@@ -25,7 +25,7 @@ public class autoMove extends CommandBase{
 
     @Override
     public void execute(){
-        encoderValue = encoder.getEnconderDistance();
+        //encoderValue = encoder.getEnconderDistance();
         remain = fDistance - encoderValue;
         drive.motorPower(Constants.kSlowSpd, Constants.kSlowSpd);
 
@@ -42,7 +42,7 @@ public class autoMove extends CommandBase{
     @Override
     public void end(boolean interrupted){
         drive.motorPower(0, 0);
-        encoder.resetEncoder();
+        //encoder.resetEncoder();
     }
 
 }
