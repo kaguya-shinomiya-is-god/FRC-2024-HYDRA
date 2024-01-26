@@ -2,6 +2,8 @@
 
 package frc.robot.Subsystems.ScoreSystem;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -9,30 +11,31 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class CaptureSubsytem extends SubsystemBase {
-  CANSparkMax downMotor, upMotor;
-  
+  CANSparkMax upMotor;
+  VictorSPX upMotor2;
   
   public CaptureSubsytem() {
-    downMotor = new CANSparkMax(Constants.MOTOR_DOWN_CAPTURE_ID, MotorType.kBrushless);
     upMotor= new CANSparkMax(Constants.MOTOR_UP_CAPTURE_ID, MotorType.kBrushless);
+    upMotor2 = new VictorSPX(Constants.MOTOR_UP_CAPTURE_2_ID);
     initMotors();
-   
 }
 
 public void getNote(){
-  upMotor.set(Constants.kNormalSpd);
-}
+    upMotor.set(Constants.kNormalSpd);
+    upMotor2.set(ControlMode.PercentOutput, Constants.kNormalSpd);
 
+}
 public void getOff(){
   upMotor.set(0);
+  upMotor2.set(ControlMode.PercentOutput, 0);
 }
 
 private void initMotors (){
-downMotor.setInverted(false);
 upMotor.setInverted(false);
-upMotor.follow(downMotor);
+upMotor2.setInverted(false);
+
+
+
 
 }
-
-
 }

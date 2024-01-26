@@ -10,9 +10,9 @@ public final class Constants {
     public static final int MOTOR_DOWN_LAUCHER_ID = -1;
     public static final int MOTOR_UP1_LAUNCHER_ID = -1;
     public static final int MOTOR_UP2_LAUNCHER_ID = -1;
-    public static final int MOTOR_DOWN_CAPTURE_ID = 0;
     public static final int MOTOR_UP_CAPTURE_ID = 0;
-
+    public static final int MOTOR_UP_CAPTURE_2_ID = 0;
+    
     public static final int SOLENOID_CLIMBING_FOWARD_ID = 15;
     public static final int SOLENOID_CLIMBING_BACK_ID = 8;
 
@@ -41,5 +41,6 @@ public final class Constants {
     public static final double kFastSpd = 1;
     public static final double kNormalSpd = 0.5;
     public static final double kSlowSpd = 0.25;
+    
        
 }

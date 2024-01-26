@@ -40,6 +40,7 @@ public class DefaultSystem extends CommandBase{
 
         capture(systemController.getRawButton(Constants.BUTTON_A));
         shoot(systemController.getRawButton(Constants.BUTTON_X));
+        
     }
 
     private void capture(boolean button){
