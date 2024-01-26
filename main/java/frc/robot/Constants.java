@@ -6,6 +6,8 @@ public final class Constants {
     public static final int MOTOR_RIGHT2_ID = 1;
     public static final int MOTOR_LEFT2_ID = 3;
 
+    //Error in `/usr/local/frc/JRE/bin/java': free(): invalid next size (fast): 0xa97e6ac0
+
     public static final int MOTOR_ANG_ID = -1;
     public static final int MOTOR_DOWN_LAUCHER_ID = -1;
     public static final int MOTOR_UP1_LAUNCHER_ID = -1;
