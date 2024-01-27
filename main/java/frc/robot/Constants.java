@@ -6,6 +6,8 @@ public final class Constants {
     public static final int MOTOR_RIGHT2_ID = 1;
     public static final int MOTOR_LEFT2_ID = 3;
 
+    //Error in `/usr/local/frc/JRE/bin/java': free(): invalid next size (fast): 0xa97e6ac0
+
     public static final int MOTOR_ANG_ID = -1;
 
 
@@ -45,7 +47,5 @@ public final class Constants {
     public static final double kFastSpd = 1;
     public static final double kNormalSpd = 0.5;
     public static final double kSlowSpd = 0.25;
-    public static final double kCaptureSpd = 0.3;
-    public static final double kShootSpd = 0.8;
        
 }
