@@ -28,7 +28,6 @@ public class RobotContainer {
 
   //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
   //private static GyroSubsystem gyro = new GyroSubsystem();
-  private static EncoderSubsytem encoder = new EncoderSubsytem();
   //private static CameraSubsystem cam = new CameraSubsystem();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();

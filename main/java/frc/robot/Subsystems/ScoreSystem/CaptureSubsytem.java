@@ -20,25 +20,23 @@ public class CaptureSubsytem extends SubsystemBase {
   }
 
 public void getNote(){
-  setMotors(1);
+  downMotor.set((0.3));
+  upMotor.set(ControlMode.PercentOutput, (1));
 }
 
 public void spitNote(){
-  setMotors(-1);
+  downMotor.set(-(0.3));
+  upMotor.set(ControlMode.PercentOutput, -(1));
 }
 
 public void getOff(){
-  setMotors(0);
+  downMotor.set((0));
+  upMotor.set(ControlMode.PercentOutput, (0));
 }
 
 private void initMotors (){
 downMotor.setInverted(false);
 upMotor.setInverted(true);
-}
-
-private void setMotors(double x){
-  downMotor.set((0.3 * x));
-  upMotor.set(ControlMode.PercentOutput, (1 * x));
 }
 
 
