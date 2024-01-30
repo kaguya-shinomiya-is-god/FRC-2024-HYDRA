@@ -35,7 +35,7 @@ public class AutoAngle extends PIDCommand{
 
     @Override
     public void execute(){
-        SmartDashboard.putString("STATUS ANGULANTING", "ANGULATING BY" + goal);
+        SmartDashboard.putString("STATUS ANGULANTING", "ANGULATING BY " + goal);
         SmartDashboard.putString("% TO CONCLUDE", zAng.getAsDouble()/goal + "%");
     }
 

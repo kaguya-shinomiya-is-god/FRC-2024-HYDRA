@@ -1,53 +1,49 @@
 package frc.robot.Commands.AutoLocomotion;
 
-import java.util.function.DoubleConsumer;
-import java.util.function.DoubleSupplier;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 
-public class AutoMove extends PIDCommand{
+public class AutoMove extends CommandBase{
 
-    static Encoder encoder;
-    static DriveSubsystem drive;
-    static PIDController pid = new PIDController(Constants.AUTOMOVE_kP, Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
-    private double point = 0;
+    DriveSubsystem driver;
+    private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, 
+    Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
+    Encoder encoder;
+    private double setpoint = 0;
+    private double error = 0;
 
-    public AutoMove(double setpoint, DriveSubsystem driver, Encoder encoder) {
-        super(pid, 
-        () -> encoder.getDistance(), 
-        () -> setpoint, 
-        (output) -> drive.motorPower(0, output), 
-        driver);
-        addRequirements(driver);
-        this.point = setpoint;
-        AutoMove.encoder = encoder;
-        AutoMove.drive = driver;
+    public AutoMove(DriveSubsystem driver, Encoder encoder, double setpoint){
         encoder.reset();
+        this.driver = driver;
+        this.encoder = encoder;
+        this.setpoint = setpoint;
+        addRequirements(driver);
+    }
+
+    @Override
+    public void initialize() {
+        pid.setSetpoint(setpoint);
     }
 
     @Override
     public void execute() {
-        SmartDashboard.putString("STATUS MOVING", "MOVING BY" + point + " cm");
-        SmartDashboard.putNumber("ENCODER DISTANCE", encoder.getDistance());
-        SmartDashboard.putString("% TO CONCLUDE", ((encoder.getDistance() / point) + " %"));
-        SmartDashboard.putNumber("PID CONTROLLER", pid.calculate(encoder.get(),point));
+        pid.calculate(encoder.getDistance());
+        SmartDashboard.putNumber("Error", pid.getPositionError());
     }
 
     @Override
     public void end(boolean interrupted) {
-        drive.motorPower(0, 0);
-        SmartDashboard.putString("STATUS MOVING", "FINISHED");
+        
     }
-
 
     @Override
     public boolean isFinished() {
-        return pid.atSetpoint();
+        return false;
     }
+
     
 }
