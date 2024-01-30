@@ -1,6 +1,5 @@
 package frc.robot.Commands.AutoLocomotion;
 
-import java.util.function.DoubleConsumer;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.math.controller.PIDController;

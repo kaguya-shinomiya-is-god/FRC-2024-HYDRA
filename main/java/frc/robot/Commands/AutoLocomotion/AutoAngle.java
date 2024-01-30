@@ -26,7 +26,7 @@ public class AutoAngle extends PIDCommand{
     static Subsystem[] req = {drive, gyro};
     static DoubleSupplier zAng = () -> gyro.getzAngle();
     static DoubleConsumer output;
-    static double goal = 0;
+    double goal = 0;
 
     @Override
     public void initialize(){
