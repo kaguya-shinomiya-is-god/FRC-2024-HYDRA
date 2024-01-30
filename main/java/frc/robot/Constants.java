@@ -47,5 +47,15 @@ public final class Constants {
     public static final double kFastSpd = 1;
     public static final double kNormalSpd = 0.5;
     public static final double kSlowSpd = 0.25;
+    public static final double kShootSpd = 0.8;
+
+
+    public static final double AUTOANGLE_kP = 0;
+    public static final double AUTOANGLE_kI = 0;
+    public static final double AUTOANGLE_kD = 0;
+
+    public static final double AUTOMOVE_kP = 0;
+    public static final double AUTOMOVE_kI = 0;
+    public static final double AUTOMOVE_kD = 0;
        
 }

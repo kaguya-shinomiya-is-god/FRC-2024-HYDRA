@@ -28,19 +28,16 @@ public class ATFinder extends CommandBase{
 
         if(!find)
             drive.motorPower(Constants.kNormalSpd, -Constants.kNormalSpd);
-        else 
-            isFinished();
 
     }
 
     @Override
     public void end(boolean interrupted){
-         
+        drive.motorPower(0, 0);
     }
 
     @Override
     public boolean isFinished(){
-        drive.motorPower(0, 0);
-        return false;
+        return find;
     }
 }

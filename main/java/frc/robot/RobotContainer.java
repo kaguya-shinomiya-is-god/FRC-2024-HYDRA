@@ -1,18 +1,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Commands.AutoLocomotion.*;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
-import frc.robot.Subsystems.Sensors.*;
 
 public class RobotContainer {
 
@@ -21,7 +17,7 @@ public class RobotContainer {
 
   private static DriveSubsystem robotDrive = new DriveSubsystem();
   
-  private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
+  //private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
   private static CaptureSubsytem capture = new CaptureSubsytem();
   //private static ClimbSubystem EscaladaSub = new ClimbSubystem();
   private static LauncherSubystem shooter = new LauncherSubystem();
@@ -51,12 +47,12 @@ public class RobotContainer {
       .onFalse(new InstantCommand(() -> capture.getOff()));
 
     new JoystickButton(systemsController, Constants.BUTTON_X)
-      .onTrue(new InstantCommand(() -> shooter.launcherShooter()))
+      .onTrue(new InstantCommand(() -> shooter.launcherSpeaker()))
       .onFalse(new InstantCommand(() -> shooter.launcherShooterOff()));
-    
-    new JoystickButton(systemsController, Constants.LB)
-      .onTrue(new InstantCommand(() -> capture.spitNote()))
-      .onFalse(new InstantCommand(() -> capture.getOff()));
+
+    new JoystickButton(systemsController, Constants.BUTTON_B)
+      .onTrue(new InstantCommand(() -> shooter.launcherAmp()))
+      .onFalse(new InstantCommand(() -> shooter.launcherShooterOff()));
 
 
   }

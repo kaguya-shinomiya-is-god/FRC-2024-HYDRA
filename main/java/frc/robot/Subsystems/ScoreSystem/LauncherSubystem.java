@@ -20,12 +20,12 @@ public class LauncherSubystem extends SubsystemBase{
     private void initMotors(){
         downMotor.setInverted(false);
         up1Motor.setInverted(true);
-        up2Motor.setInverted(false);
+        up2Motor.setInverted(true);
         up2Motor.follow(up1Motor);
         downMotor.follow(up1Motor);
     }
 
-    public void launcherShooter(){
+    public void launcherSpeaker(){
         up1Motor.set(ControlMode.PercentOutput, Constants.kShootSpd);
     }
 
@@ -33,8 +33,8 @@ public class LauncherSubystem extends SubsystemBase{
         up1Motor.set(ControlMode.PercentOutput, -Constants.kShootSpd/2);
     }
 
-    public void launcherSpit(){
-        up1Motor.set(ControlMode.PercentOutput, Constants.kShootSpd/2);
+    public void launcherAmp(){
+        up1Motor.set(ControlMode.PercentOutput, Constants.kShootSpd/4);
     }
 
     public void launcherShooterOff(){
