@@ -45,10 +45,9 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     ultrasonicRange = (ultrasonic.getValue() * (5/RobotController.getVoltage5V()))/8;
-
-    
-    
-  }
+    SmartDashboard.putNumber("Left Motor", powers[0]);
+    SmartDashboard.putNumber("Right Motor", powers[1]);
+}
  
   public void defaultDrive(double leftStickX, double leftStickY,double rightStickX,double rightStickY, double lt, double rt,double spd){
     m_Driver = new Driver(leftStickX, leftStickY,rightStickX,rightStickY, lt, rt);

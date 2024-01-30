@@ -1,11 +1,16 @@
 
 package frc.robot;
 
+import edu.wpi.first.hal.SimDevice;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.AutoLocomotion.AutoMove;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
@@ -21,6 +26,10 @@ public class RobotContainer {
   private static CaptureSubsytem capture = new CaptureSubsytem();
   //private static ClimbSubystem EscaladaSub = new ClimbSubystem();
   private static LauncherSubystem shooter = new LauncherSubystem();
+  private static Encoder encoder = new Encoder(Constants.ENCODER_A_PORT, Constants.ENCODER_B_PORT);
+
+  // SIM DEVICES
+  private static EncoderSim simcoder = new EncoderSim(encoder);
 
   //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
   //private static GyroSubsystem gyro = new GyroSubsystem();
@@ -31,11 +40,10 @@ public class RobotContainer {
   double spd = 0.75;
   
   
-  public RobotContainer() {
-                                                                                                                                                                                                                                                                                                                                                                 
+  public RobotContainer() {                                                                                                                                                                                                                                                                                                                                                           
     configureButtonBindings();
-    robotDrive.setDefaultCommand(
-      new DefaultDrive(robotDrive, driverController));
+    robotDrive.setDefaultCommand(new DefaultDrive(robotDrive, driverController));
+    encoder.setDistancePerPulse(36);
 
   }
 
@@ -58,7 +66,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand(){
-    return null;
+    return new AutoMove(50, robotDrive, encoder);
   }
 
 }
