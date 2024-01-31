@@ -12,7 +12,7 @@ public class AutoMove extends CommandBase{
     DriveSubsystem driver;
     private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, 
     Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
-    Encoder encoder;
+    private Encoder encoder;
     private double setpoint = 0;
 
     public AutoMove(DriveSubsystem driver, Encoder encoder, double setpoint){
