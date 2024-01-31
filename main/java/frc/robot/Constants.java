@@ -25,8 +25,8 @@ public final class Constants {
     public static final int CONTROLE1_ID = 0;
     public static final int CONTROLE2_ID = 1;
 
-    public static final int ENCODER_A_PORT = 3;
-    public static final int ENCODER_B_PORT = 4;
+    public static final int ENCODER_A_PORT = 0;
+    public static final int ENCODER_B_PORT = 1;
     
     public static final int LT = 2;
     public static final int RT = 3;
@@ -54,7 +54,7 @@ public final class Constants {
     public static final double AUTOANGLE_kI = 0;
     public static final double AUTOANGLE_kD = 0;
 
-    public static final double AUTOMOVE_kP = 0.01;
+    public static final double AUTOMOVE_kP = 0.002;
     public static final double AUTOMOVE_kI = 0.0000001;
     public static final double AUTOMOVE_kD = 0.0001;
        

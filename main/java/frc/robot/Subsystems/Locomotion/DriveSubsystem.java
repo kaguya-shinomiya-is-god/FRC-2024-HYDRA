@@ -31,8 +31,6 @@ public class DriveSubsystem extends SubsystemBase {
   private double ultrasonicRange = 0;
 
   public AHRS navx = new AHRS(SPI.Port.kMXP);
-
-  private final Encoder encoder = new Encoder(1, 2);
   private Driver m_Driver;
   private Timer timer = new Timer();
   double powers[] = {0,0};
@@ -40,7 +38,6 @@ public class DriveSubsystem extends SubsystemBase {
   /** Creates a new DriveTrain. */
   public DriveSubsystem() {
     init_motors();
-    encoder.setDistancePerPulse(36);
   }
 
   @Override
@@ -53,7 +50,6 @@ public class DriveSubsystem extends SubsystemBase {
 
   @Override
   public void simulationPeriodic() {
-    EncoderSim sim = new EncoderSim(encoder);
   }
  
   public void defaultDrive(double leftStickX, double leftStickY,double rightStickX,double rightStickY, double lt, double rt,double spd){

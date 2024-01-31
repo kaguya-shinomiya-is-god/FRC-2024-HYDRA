@@ -14,7 +14,6 @@ public class AutoMove extends CommandBase{
     Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
     Encoder encoder;
     private double setpoint = 0;
-    private double error = 0;
 
     public AutoMove(DriveSubsystem driver, Encoder encoder, double setpoint){
         encoder.reset();
@@ -31,18 +30,18 @@ public class AutoMove extends CommandBase{
 
     @Override
     public void execute() {
-        pid.calculate(encoder.getDistance());
         SmartDashboard.putNumber("Error", pid.getPositionError());
+        SmartDashboard.putNumber("PID", pid.calculate(encoder.getDistance()));
     }
 
     @Override
     public void end(boolean interrupted) {
-        
+
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return pid.atSetpoint();
     }
 
     

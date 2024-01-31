@@ -29,7 +29,6 @@ public class RobotContainer {
   private static Encoder encoder = new Encoder(Constants.ENCODER_A_PORT, Constants.ENCODER_B_PORT);
 
   // SIM DEVICES
-  public EncoderSim simcoder = new EncoderSim(encoder);
 
   //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
   //private static GyroSubsystem gyro = new GyroSubsystem();
@@ -44,7 +43,7 @@ public class RobotContainer {
     configureButtonBindings();
     robotDrive.setDefaultCommand(new DefaultDrive(robotDrive, driverController));
     encoder.setSamplesToAverage(5);
-    encoder.setDistancePerPulse(((Math.PI * 2 * 7.4) / 2048));
+    encoder.setDistancePerPulse((47.87 / 2048));
 
   }
 
@@ -67,7 +66,7 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand(){
-    return new AutoMove(robotDrive, encoder, 250);
+    return new AutoMove(robotDrive, encoder, 100);
   }
 
 }
