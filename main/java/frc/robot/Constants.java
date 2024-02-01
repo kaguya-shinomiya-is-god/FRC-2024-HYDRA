@@ -57,5 +57,13 @@ public final class Constants {
     public static final double AUTOMOVE_kP = 0.002;
     public static final double AUTOMOVE_kI = 0.0000001;
     public static final double AUTOMOVE_kD = 0.0001;
+
+    public static final double WHEELS_CIRCUNFERENCE = 47.87;
+    public static final double CHASSIS_WIDTH = 82.75;
+    public static final double CHASSIS_HEIGHT = 77.5;
+    public static final double CHASSIS_DIAGONAL = Math.sqrt(Math.pow(CHASSIS_WIDTH,2)+
+                                                            Math.pow(CHASSIS_HEIGHT,2));
+    public static final double CHASSIS_CIRCUNFERENCE = CHASSIS_DIAGONAL * Math.PI;
+    public static final double CHASSIS_COMPLETE_ROTATION = CHASSIS_CIRCUNFERENCE / WHEELS_CIRCUNFERENCE;
        
 }

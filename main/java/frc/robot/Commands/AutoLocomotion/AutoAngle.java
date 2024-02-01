@@ -24,11 +24,22 @@ public class AutoAngle extends CommandBase{
     @Override
     public void initialize(){
         pid.setSetpoint(setpoint);
+        ahrs.reset();
     }
 
     @Override
     public void execute(){
-        
+        drive.motorPower(0,pid.calculate(ahrs.getAngle()));
+    }
+
+    @Override
+    public void end(boolean interrupted){
+        drive.motorPower(0,0);
+    }
+
+    @Override
+    public boolean isFinished(){
+        return pid.atSetpoint();
     }
 
     

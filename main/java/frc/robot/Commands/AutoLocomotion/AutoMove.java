@@ -10,10 +10,10 @@ import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 public class AutoMove extends CommandBase{
 
     DriveSubsystem driver;
-    private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, 
-    Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
+    private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
     private Encoder encoder;
     private double setpoint = 0;
+    private double spd = 0;
 
     public AutoMove(DriveSubsystem driver, Encoder encoder, double setpoint){
         encoder.reset();
@@ -32,11 +32,13 @@ public class AutoMove extends CommandBase{
     public void execute() {
         SmartDashboard.putNumber("Error", pid.getPositionError());
         SmartDashboard.putNumber("PID", pid.calculate(encoder.getDistance()));
+        spd = pid.calculate(encoder.getDistance());
+        driver.motorPower(spd,spd);
     }
 
     @Override
     public void end(boolean interrupted) {
-
+        driver.motorPower(0, 0);
     }
 
     @Override

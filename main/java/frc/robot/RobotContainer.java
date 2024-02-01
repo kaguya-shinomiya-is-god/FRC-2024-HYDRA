@@ -22,7 +22,7 @@ public class RobotContainer {
 
   private static DriveSubsystem robotDrive = new DriveSubsystem();
   
-  //private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
+  private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
   private static CaptureSubsytem capture = new CaptureSubsytem();
   //private static ClimbSubystem EscaladaSub = new ClimbSubystem();
   private static LauncherSubystem shooter = new LauncherSubystem();
@@ -31,7 +31,6 @@ public class RobotContainer {
   // SIM DEVICES
 
   //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
-  //private static GyroSubsystem gyro = new GyroSubsystem();
   //private static CameraSubsystem cam = new CameraSubsystem();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -48,7 +47,6 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    // CONFIGURAR O QUE CADA BOTÃO FAZ
 
     new JoystickButton(systemsController, Constants.BUTTON_A)
       .onTrue(new InstantCommand(() -> capture.getNote()))
