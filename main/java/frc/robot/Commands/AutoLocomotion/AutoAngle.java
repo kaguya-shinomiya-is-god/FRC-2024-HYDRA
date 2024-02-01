@@ -12,9 +12,22 @@ public class AutoAngle extends CommandBase{
     private PIDController pid = new PIDController(Constants.AUTOANGLE_kP, 
         Constants.AUTOANGLE_kI, Constants.AUTOANGLE_kD);
     private AHRS ahrs;
+    private DriveSubsystem drive;
     private double setpoint = 0;
 
     public AutoAngle(DriveSubsystem drive, AHRS ahrs, double setpoint){
+        this.drive = drive;
+        this.ahrs = ahrs;
+        this.setpoint = setpoint;
+    }
+
+    @Override
+    public void initialize(){
+        pid.setSetpoint(setpoint);
+    }
+
+    @Override
+    public void execute(){
         
     }
 
