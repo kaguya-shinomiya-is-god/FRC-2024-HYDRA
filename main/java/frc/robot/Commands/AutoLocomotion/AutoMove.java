@@ -11,14 +11,12 @@ public class AutoMove extends CommandBase{
 
     DriveSubsystem driver;
     private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
-    private Encoder encoder;
     private double setpoint = 0;
     private double spd = 0;
+    private double encoding = 0;
 
-    public AutoMove(DriveSubsystem driver, Encoder encoder, double setpoint){
-        encoder.reset();
+    public AutoMove(DriveSubsystem driver,double setpoint){
         this.driver = driver;
-        this.encoder = encoder;
         this.setpoint = setpoint;
         addRequirements(driver);
     }
@@ -26,13 +24,15 @@ public class AutoMove extends CommandBase{
     @Override
     public void initialize() {
         pid.setSetpoint(setpoint);
+        pid.setTolerance(10);
     }
 
     @Override
     public void execute() {
+        encoding = driver.encoder.getDistance();
         SmartDashboard.putNumber("Error", pid.getPositionError());
-        SmartDashboard.putNumber("PID", pid.calculate(encoder.getDistance()));
-        spd = pid.calculate(encoder.getDistance());
+        SmartDashboard.putNumber("PID", pid.calculate(encoding));
+        spd = pid.calculate(encoding);
         driver.motorPower(spd,spd);
     }
 
@@ -45,6 +45,5 @@ public class AutoMove extends CommandBase{
     public boolean isFinished() {
         return pid.atSetpoint();
     }
-
     
 }

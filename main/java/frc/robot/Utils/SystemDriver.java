@@ -9,8 +9,8 @@ public class SystemDriver {
         else return spd -= 1;
     }
 
-    public static double angleForRotation(double angle_in_degrees){
-        double rotations = (angle_in_degrees/360) * Constants.CHASSIS_COMPLETE_ROTATION;
+    public double angleForRotation(double angle_in_degrees){
+        double rotations = (angle_in_degrees/360) * Constants.CHASSIS_CIRCUNFERENCE;
         return rotations;
     }
 }

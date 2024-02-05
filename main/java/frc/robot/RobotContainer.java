@@ -1,16 +1,16 @@
 
 package frc.robot;
-
-import edu.wpi.first.hal.SimDevice;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.AutoLocomotion.AutoAngle;
+import frc.robot.Commands.AutoLocomotion.AutoAngleEncoder;
 import frc.robot.Commands.AutoLocomotion.AutoMove;
+import frc.robot.Commands.AutoLocomotion.AutoSequence;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
@@ -20,13 +20,12 @@ public class RobotContainer {
   public Joystick driverController = new Joystick(Constants.CONTROLE1_ID);
   public Joystick systemsController = new Joystick(Constants.CONTROLE2_ID);
 
-  private static DriveSubsystem robotDrive = new DriveSubsystem();
+  DriveSubsystem robotDrive = new DriveSubsystem();
   
-  private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
-  private static CaptureSubsytem capture = new CaptureSubsytem();
-  //private static ClimbSubystem EscaladaSub = new ClimbSubystem();
-  private static LauncherSubystem shooter = new LauncherSubystem();
-  private static Encoder encoder = new Encoder(Constants.ENCODER_A_PORT, Constants.ENCODER_B_PORT);
+  //private static AngularPlatSubsystem AngSub = new AngularPlatSubsystem();
+  CaptureSubsytem capture = new CaptureSubsytem();
+  ClimbSubsystem climb = new ClimbSubsystem(8,15);
+  LauncherSubystem shooter = new LauncherSubystem();
 
   // SIM DEVICES
 
@@ -40,9 +39,9 @@ public class RobotContainer {
   
   public RobotContainer() {                                                                                                                                                                                                                                                                                                                                                           
     configureButtonBindings();
-    robotDrive.setDefaultCommand(new DefaultDrive(robotDrive, driverController));
-    encoder.setSamplesToAverage(5);
-    encoder.setDistancePerPulse((47.87 / 2048));
+    robotDrive.setDefaultCommand(Commands.parallel(new DefaultDrive(robotDrive, driverController)));
+    robotDrive.encoder.setSamplesToAverage(5);
+    robotDrive.encoder.setDistancePerPulse((47.87 / 2048));
 
   }
 
@@ -60,11 +59,22 @@ public class RobotContainer {
       .onTrue(new InstantCommand(() -> shooter.launcherAmp()))
       .onFalse(new InstantCommand(() -> shooter.launcherShooterOff()));
 
+    new JoystickButton(systemsController, Constants.RB)
+      .onTrue(new InstantCommand(() -> climb.goUP()))
+      .onFalse(new InstantCommand(() -> climb.closeDoors()));
+
+    new JoystickButton(systemsController, Constants.LB)
+      .onTrue(new InstantCommand(() -> climb.goDOWN()))
+      .onFalse(new InstantCommand(() -> climb.closeDoors()));
+
 
   }
 
   public Command getAutonomousCommand(){
-    return new AutoMove(robotDrive, encoder, 100);
+    robotDrive.gyro.reset();
+    robotDrive.encoder.reset();
+    return new SequentialCommandGroup(new AutoAngle(robotDrive, 90),
+                                      new AutoMove(robotDrive, 500));
   }
 
 }

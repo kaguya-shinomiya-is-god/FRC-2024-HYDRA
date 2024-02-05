@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.simulation.EncoderSim;
+import edu.wpi.first.wpilibj.I2C.Port;
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
 import frc.robot.Utils.Driver;
 import edu.wpi.first.wpilibj.SPI;
 
@@ -30,15 +29,25 @@ public class DriveSubsystem extends SubsystemBase {
   private AnalogInput ultrasonic = new AnalogInput(0);
   private double ultrasonicRange = 0;
 
+  public AHRS gyro = new AHRS(Port.kMXP);
+  
+  public Encoder encoder = new Encoder(Constants.ENCODER_A_PORT, Constants.ENCODER_B_PORT);
+
   public AHRS navx = new AHRS(SPI.Port.kMXP);
   private Driver m_Driver;
   private Timer timer = new Timer();
   double powers[] = {0,0};
+  public int secondaryIndex = 0;
+  public int index = 0;
   
   /** Creates a new DriveTrain. */
   public DriveSubsystem() {
     init_motors();
+    gyro.reset();
+    encoder.reset();
   }
+
+  
 
   @Override
   public void periodic() {
@@ -46,7 +55,13 @@ public class DriveSubsystem extends SubsystemBase {
     ultrasonicRange = (ultrasonic.getValue() * (5/RobotController.getVoltage5V()))/8;
     SmartDashboard.putNumber("Left Motor", powers[0]);
     SmartDashboard.putNumber("Right Motor", powers[1]);
-}
+    SmartDashboard.putNumber("Angle", gyro.getAngle());
+    SmartDashboard.putNumber("Encoder", encoder.getDistance());
+    SmartDashboard.putNumber("RobotDrive Index", index);
+    SmartDashboard.putNumber("Index By Secondary", (double)index/secondaryIndex);
+    SmartDashboard.putNumber("Secundary by Index", (double)secondaryIndex/index);
+    
+  }
 
   @Override
   public void simulationPeriodic() {
