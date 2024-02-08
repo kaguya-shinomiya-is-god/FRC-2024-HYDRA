@@ -1,7 +1,6 @@
 package frc.robot.Commands.AutoLocomotion;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -32,6 +31,10 @@ public class AutoMove extends CommandBase{
         encoding = driver.encoder.getDistance();
         SmartDashboard.putNumber("Error", pid.getPositionError());
         SmartDashboard.putNumber("PID", pid.calculate(encoding));
+        SmartDashboard.putNumber("I Value", pid.getI());
+        SmartDashboard.putNumber("P Value", pid.getP());
+        SmartDashboard.putNumber("D Value", pid.getD());
+        SmartDashboard.putString("Command Stts", "Move Executing");
         spd = pid.calculate(encoding);
         driver.motorPower(spd,spd);
     }
@@ -39,6 +42,8 @@ public class AutoMove extends CommandBase{
     @Override
     public void end(boolean interrupted) {
         driver.motorPower(0, 0);
+        driver.gyro.reset();
+        SmartDashboard.putString("Command Stts", "Move END");
     }
 
     @Override

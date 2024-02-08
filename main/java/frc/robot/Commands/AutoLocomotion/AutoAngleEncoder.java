@@ -9,28 +9,28 @@ import frc.robot.Constants;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Utils.SystemDriver;
 
-public class AutoAngleEncoder extends CommandBase{
-    private PIDController pid = new PIDController(Constants.AUTOANGLE_kP, 
-        Constants.AUTOANGLE_kI, Constants.AUTOANGLE_kD);
+public class AutoAngleEncoder extends CommandBase {
+    private PIDController pid = new PIDController(Constants.AUTOANGLE_kP,
+            Constants.AUTOANGLE_kI, Constants.AUTOANGLE_kD);
     private DriveSubsystem drive;
     private double setpoint = 0;
     private double spd = 0;
     private double angle = 0;
     private SystemDriver sysdriver = new SystemDriver();
 
-    public AutoAngleEncoder(DriveSubsystem drive, double setpoint){
+    public AutoAngleEncoder(DriveSubsystem drive, double setpoint) {
         this.drive = drive;
         this.setpoint = sysdriver.angleForRotation(setpoint);
     }
 
     @Override
-    public void initialize(){
+    public void initialize() {
         pid.setSetpoint(setpoint);
         drive.encoder.setDistancePerPulse(47.87 / 2048);
     }
 
     @Override
-    public void execute(){
+    public void execute() {
         drive.secondaryIndex++;
         angle = drive.encoder.getDistance();
         spd = pid.calculate(angle);
@@ -42,14 +42,13 @@ public class AutoAngleEncoder extends CommandBase{
     }
 
     @Override
-    public void end(boolean interrupted){
-        drive.motorPower(0,0);
+    public void end(boolean interrupted) {
+        drive.motorPower(0, 0);
     }
 
     @Override
-    public boolean isFinished(){
+    public boolean isFinished() {
         return pid.atSetpoint();
     }
 
-    
 }

@@ -50,8 +50,8 @@ public final class Constants {
     public static final double kShootSpd = 0.8;
 
 
-    public static final double AUTOANGLE_kP = 0.011;
-    public static final double AUTOANGLE_kI = 0.0003;
+    public static final double AUTOANGLE_kP = 0.02;
+    public static final double AUTOANGLE_kI = 0.0009;
     public static final double AUTOANGLE_kD = 0.001;
 
     public static final double AUTOMOVE_kP = 0.002;

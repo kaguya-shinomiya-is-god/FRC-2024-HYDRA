@@ -1,9 +1,5 @@
 package frc.robot.Commands.AutoLocomotion;
 
-import java.util.stream.DoubleStream;
-
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -27,7 +23,7 @@ public class AutoAngle extends CommandBase {
     @Override
     public void initialize() {
         pid.setSetpoint(setpoint);
-        pid.setTolerance(15);
+        pid.setTolerance(10);
     }
 
     @Override
@@ -37,7 +33,10 @@ public class AutoAngle extends CommandBase {
         SmartDashboard.putNumber("Angle", angle);
         SmartDashboard.putNumber("PID", spd);
         SmartDashboard.putNumber("Error", pid.getPositionError());
-        SmartDashboard.putBoolean("Command Stts", pid.atSetpoint());
+        SmartDashboard.putNumber("I Value", pid.getI());
+        SmartDashboard.putNumber("P Value", pid.getP());
+        SmartDashboard.putNumber("D Value", pid.getD());
+        SmartDashboard.putString("Command Stts", "Angle Executing");
         power[0] = spd;
         power[1] = -spd;
         drive.setPower(power);
@@ -46,6 +45,8 @@ public class AutoAngle extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         drive.motorPower(0, 0);
+        SmartDashboard.putString("Command Stts", "Angle END");
+        drive.gyro.reset();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package frc.robot.Subsystems.ScoreSystem;
 
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -19,8 +18,6 @@ public class ClimbSubsystem {
         sole2.set(true);
         comp.enableAnalog(100, 120);
     }
-
-    @Ove
 
     public void goUP(){
         sole1.set(true);
