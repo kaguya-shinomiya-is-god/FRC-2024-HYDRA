@@ -4,20 +4,24 @@
 
 package frc.robot.Subsystems.Locomotion;
 
+import java.util.Map;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.I2C.Port;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Utils.Driver;
+import frc.robot.Utils.ShuffleBoardClass;
 import edu.wpi.first.wpilibj.SPI;
 
 public class DriveSubsystem extends SubsystemBase {
@@ -45,6 +49,7 @@ public class DriveSubsystem extends SubsystemBase {
     init_motors();
     gyro.reset();
     encoder.reset();
+    initShuffleBoard();
   }
 
   
@@ -53,14 +58,11 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     ultrasonicRange = (ultrasonic.getValue() * (5/RobotController.getVoltage5V()))/8;
-    SmartDashboard.putNumber("Left Motor", powers[0]);
-    SmartDashboard.putNumber("Right Motor", powers[1]);
+    SmartDashboard.putNumber("Motor Left", powers[0]);
+    SmartDashboard.putNumber("Motor Right", powers[1]);
     SmartDashboard.putNumber("Angle", gyro.getAngle());
     SmartDashboard.putNumber("Encoder", encoder.getDistance());
-    SmartDashboard.putNumber("RobotDrive Index", index);
-    SmartDashboard.putNumber("Index By Secondary", (double)index/secondaryIndex);
-    SmartDashboard.putNumber("Secundary by Index", (double)secondaryIndex/index);
-    
+
   }
 
   @Override
@@ -98,9 +100,6 @@ public class DriveSubsystem extends SubsystemBase {
     }
     double t1 = timer.get()*2;
     t1 = (t1>=1) ? 1: t1;    
-    
-    SmartDashboard.putNumber("mL:",powers[0]);
-    SmartDashboard.putNumber("mR:", powers[1]);
     this.motor_left.set(ControlMode.PercentOutput,powers[0]);
     this.motor_left2.set(ControlMode.PercentOutput, powers[0]);
     this.motor_right.set(ControlMode.PercentOutput,powers[1]);
@@ -120,6 +119,29 @@ public class DriveSubsystem extends SubsystemBase {
     this.motor_right.setNeutralMode(NeutralMode.Brake);
     this.motor_left2.setNeutralMode(NeutralMode.Brake);
     this.motor_right2.setNeutralMode(NeutralMode.Brake);
+  }
+
+  public void initShuffleBoard(){
+
+    ShuffleBoardClass.LocomotionTab.
+                      add("LM", powers[0]).
+                      withWidget(BuiltInWidgets.kDial).
+                      withProperties(Map.of("min", -1, "max", 1));
+    
+    ShuffleBoardClass.LocomotionTab.
+                      add("RM", powers[1]). 
+                      withWidget(BuiltInWidgets.kDial). 
+                      withProperties(Map.of("min", -1, "max", 1));
+
+    ShuffleBoardClass.LocomotionTab.
+                      add("Angle", gyro.getAngle()).
+                      withWidget(BuiltInWidgets.kGyro);
+
+    ShuffleBoardClass.LocomotionTab.
+                      add("Encoder", encoder).
+                      withWidget(BuiltInWidgets.kEncoder);
+    
+                    
   }
 
   public double getUltrasonicDistance(){

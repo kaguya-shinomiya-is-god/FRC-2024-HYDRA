@@ -35,8 +35,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
-
-    m_robotContainer.robotDrive.index = 0;
   }
 
   @Override
@@ -53,8 +51,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
-    m_robotContainer.robotDrive.index = 0;
   }
 
   @Override

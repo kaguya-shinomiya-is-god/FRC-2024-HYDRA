@@ -7,9 +7,12 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.AutoLocomotion.AutoSequence;
+import frc.robot.Commands.AutoLocomotion.CameraServer;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
+import frc.robot.Subsystems.Sensors.Camera1;
+import frc.robot.Subsystems.Sensors.CameraSubsystem;
 
 public class RobotContainer {
 
@@ -28,7 +31,7 @@ public class RobotContainer {
   // SIM DEVICES
 
   //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
-  //private static CameraSubsystem cam = new CameraSubsystem();
+  private static Camera1 cam = new Camera1();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   
@@ -72,10 +75,6 @@ public class RobotContainer {
     robotDrive.encoder.reset();
     robotDrive.gyro.reset();
     return autoSequence;
-  }
-
-  public boolean autonomousCommandIsEnabled(){
-    return autoSequence.isFinished();
   }
 
 }

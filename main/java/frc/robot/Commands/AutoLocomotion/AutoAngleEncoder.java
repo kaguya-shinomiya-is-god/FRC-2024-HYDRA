@@ -1,6 +1,5 @@
 package frc.robot.Commands.AutoLocomotion;
 
-import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

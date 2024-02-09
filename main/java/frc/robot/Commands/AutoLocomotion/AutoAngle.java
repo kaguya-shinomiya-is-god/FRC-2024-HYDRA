@@ -45,7 +45,6 @@ public class AutoAngle extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         drive.motorPower(0, 0);
-        SmartDashboard.putString("Command Stts", "Angle END");
         drive.gyro.reset();
     }
 

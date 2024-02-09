@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.math.util.Units;
+
 public final class Constants {
     public static final int MOTOR_RIGHT_ID = 2;
     public static final int MOTOR_LEFT_ID = 4;
@@ -58,7 +60,8 @@ public final class Constants {
     public static final double AUTOMOVE_kI = 0.0001;
     public static final double AUTOMOVE_kD = 0.002;
 
-    private static final double WHEELS_CIRCUNFERENCE = 47.87;
+    private static final double WHEELS_DIAMETER = Units.inchesToMeters(6)/100;
+    private static final double WHEELS_CIRCUNFERENCE = WHEELS_DIAMETER* Math.PI;
     private static final double CHASSIS_WIDTH = 82;
     private static final double CHASSIS_HEIGHT = 68.5;
     private static final double CHASSIS_DIAGONAL = Math.sqrt(Math.pow(CHASSIS_WIDTH,2)+
