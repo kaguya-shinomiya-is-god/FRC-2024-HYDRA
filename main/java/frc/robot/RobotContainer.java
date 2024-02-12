@@ -7,12 +7,10 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.AutoLocomotion.AutoSequence;
-import frc.robot.Commands.AutoLocomotion.CameraServer;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
 import frc.robot.Subsystems.Sensors.Camera1;
-import frc.robot.Subsystems.Sensors.CameraSubsystem;
 
 public class RobotContainer {
 

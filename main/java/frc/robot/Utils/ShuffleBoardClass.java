@@ -13,14 +13,14 @@ public class ShuffleBoardClass {
     private static ShuffleboardLayout L_Spd = Shuffleboard.getTab("Locomotion").
                                             getLayout("Motor Speeds", BuiltInLayouts.kGrid). 
                                             withSize(2, 1);
-    private static ShuffleboardLayout L_Sensors = Shuffleboard.getTab("Locomotion"). 
+    private static ShuffleboardLayout L_Sensors = Shuffleboard.getTab("ScoreSystem"). 
                                             getLayout("Sensors Data", BuiltInLayouts.kList);
 
-    public static ShuffleboardLayout getLocomotionSpeeds(){
+    public static ShuffleboardLayout getSpeeds(){
         return L_Spd;
     }
 
-    public static ShuffleboardLayout getLocomotionSensors(){
+    public static ShuffleboardLayout getSensors(){
         return L_Sensors;
     }
 }
