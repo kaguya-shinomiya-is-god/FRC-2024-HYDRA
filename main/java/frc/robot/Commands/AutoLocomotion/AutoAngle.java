@@ -17,7 +17,7 @@ public class AutoAngle extends CommandBase {
 
     public AutoAngle(DriveSubsystem drive, double setpoint) {
         this.drive = drive;
-        this.setpoint = setpoint +10;
+        this.setpoint = setpoint;
     }
 
     @Override

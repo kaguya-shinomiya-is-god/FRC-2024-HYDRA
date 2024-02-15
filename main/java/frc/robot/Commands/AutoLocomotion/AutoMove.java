@@ -8,7 +8,7 @@ import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 
 public class AutoMove extends CommandBase{
 
-    DriveSubsystem driver;
+    private DriveSubsystem driver;
     private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);
     private double setpoint = 0;
     private double spd = 0;
@@ -31,8 +31,8 @@ public class AutoMove extends CommandBase{
         encoding = driver.encoder.getDistance();
         SmartDashboard.putNumber("Error", pid.getPositionError());
         SmartDashboard.putNumber("PID", pid.calculate(encoding));
-        SmartDashboard.putNumber("I Value", pid.getI());
         SmartDashboard.putNumber("P Value", pid.getP());
+        SmartDashboard.putNumber("I Value", pid.getI());
         SmartDashboard.putNumber("D Value", pid.getD());
         SmartDashboard.putString("Command Stts", "Move Executing");
         spd = pid.calculate(encoding);
