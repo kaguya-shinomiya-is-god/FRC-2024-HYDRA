@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.AutoLocomotion.AutoSequence;
 import frc.robot.Commands.Joysticks.*;
@@ -41,13 +42,12 @@ public class RobotContainer {
     robotDrive.setDefaultCommand(Commands.parallel(new DefaultDrive(robotDrive, driverController)));
     robotDrive.encoder.setSamplesToAverage(5);
     robotDrive.encoder.setDistancePerPulse((47.87 / 2048));
-
   }
 
   private void configureButtonBindings() {
 
     new JoystickButton(systemsController, Constants.BUTTON_A)
-      .onTrue(new InstantCommand(() -> capture.getNote()))
+      .onTrue(getCaptureCommand())
       .onFalse(new InstantCommand(() -> capture.getOff()));
 
     new JoystickButton(systemsController, Constants.BUTTON_X)
@@ -73,6 +73,11 @@ public class RobotContainer {
     robotDrive.encoder.reset();
     robotDrive.gyro.reset();
     return autoSequence;
+  }
+
+  private SequentialCommandGroup getCaptureCommand(){
+    return new SequentialCommandGroup(new InstantCommand(() -> capture.getNote()),
+                                      new InstantCommand(() -> shooter.launcherCapSync()));
   }
 
 }

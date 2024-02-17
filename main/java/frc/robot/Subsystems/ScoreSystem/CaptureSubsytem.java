@@ -49,7 +49,7 @@ public class CaptureSubsytem extends SubsystemBase {
 
   private void initMotors() {
     downMotor.setInverted(false);
-    upMotor.setInverted(true);
+    upMotor.setInverted(false);
   }
 
   private void initShuffleboard() {

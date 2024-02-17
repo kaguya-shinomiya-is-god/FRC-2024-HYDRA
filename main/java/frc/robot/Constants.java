@@ -13,12 +13,17 @@ public final class Constants {
     public static final int MOTOR_ANG_ID = -1;
 
 
-    public static final int MOTOR_DOWN_LAUCHER_ID = 7;
-    public static final int MOTOR_UP1_LAUNCHER_ID = 8;
-    public static final int MOTOR_UP2_LAUNCHER_ID = 9;
+    public static final int MOTOR_DOWN1_LAUCHER_ID = 6;
+    public static final int MOTOR_DOWN2_LAUCHER_ID = 8;
+    public static final int MOTOR_MEDIUM1_LAUCHER_ID = 7;
+    public static final int MOTOR_MEDIUM2_LAUCHER_ID = 10;
+    public static final int MOTOR_MEDIUM3_LAUCHER_ID = 9;
+    public static final int MOTOR_MEDIUM4_LAUCHER_ID = 12;
+    public static final int MOTOR_UP1_LAUNCHER_ID = 11;
+    public static final int MOTOR_UP2_LAUNCHER_ID = 13;
 
 
-    public static final int MOTOR_DOWN_CAPTURE_ID = 10;
+    public static final int MOTOR_DOWN_CAPTURE_ID = 14;
     public static final int MOTOR_UP_CAPTURE_ID = 5;
 
     public static final int SOLENOID_CLIMBING_FOWARD_ID = 15;
