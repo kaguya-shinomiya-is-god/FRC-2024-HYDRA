@@ -1,8 +1,13 @@
 package frc.robot;
 
+import java.util.Optional;
+
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 
 public final class Constants {
+
     public static final int MOTOR_RIGHT_ID = 2;
     public static final int MOTOR_LEFT_ID = 4;
     public static final int MOTOR_RIGHT2_ID = 1;
@@ -57,6 +62,14 @@ public final class Constants {
     public static final double kNormalSpd = 0.5;
     public static final double kSlowSpd = 0.25;
     public static final double kShootSpd = 0.8;
+
+    public int SpeakerAprilTag(){
+        if(DriverStation.getAlliance() == Alliance.Blue) 
+            return 7;
+        if(DriverStation.getAlliance() == Alliance.Red)
+            return 4;
+        return 0;
+    }
 
 
     public static final double AUTOANGLE_kP = 0.02;

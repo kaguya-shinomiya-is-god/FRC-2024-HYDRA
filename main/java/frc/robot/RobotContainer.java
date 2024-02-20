@@ -1,17 +1,23 @@
 
 package frc.robot;
+import java.util.Set;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Commands.AutoLocomotion.ATFinder;
 import frc.robot.Commands.AutoLocomotion.AutoSequence;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
 import frc.robot.Subsystems.Sensors.Camera1;
+import frc.robot.Subsystems.Sensors.LimelightSubsystem;
 
 public class RobotContainer {
 
@@ -29,7 +35,7 @@ public class RobotContainer {
 
   // SIM DEVICES
 
-  //private static LimelightSubsystem limelightSub = new LimelightSubsystem();
+  private static LimelightSubsystem lime = new LimelightSubsystem();
   private static Camera1 cam = new Camera1();
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -72,12 +78,16 @@ public class RobotContainer {
   public Command getAutonomousCommand(){
     robotDrive.encoder.reset();
     robotDrive.gyro.reset();
-    return autoSequence;
+    return autoCommand();
   }
 
-  private SequentialCommandGroup getCaptureCommand(){
-    return new SequentialCommandGroup(new InstantCommand(() -> capture.getNote()),
+  private ParallelCommandGroup getCaptureCommand(){
+    return new ParallelCommandGroup(new InstantCommand(() -> capture.getNote()),
                                       new InstantCommand(() -> shooter.launcherCapSync()));
+  }
+
+  private Command autoCommand(){
+    return new SequentialCommandGroup(new ATFinder(lime, robotDrive));
   }
 
 }
