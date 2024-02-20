@@ -15,8 +15,8 @@ import frc.robot.Utils.ShuffleBoardClass;
 public class CaptureSubsytem extends SubsystemBase {
   CANSparkMax downMotor;
   VictorSPX upMotor;
-  DigitalInput noteSwitch;
-  private boolean on, load = false;
+  private DigitalInput noteSwitch;
+  private boolean load = false;
 
   public CaptureSubsytem() {
     downMotor = new CANSparkMax(Constants.MOTOR_DOWN_CAPTURE_ID, MotorType.kBrushless);
@@ -52,9 +52,12 @@ public class CaptureSubsytem extends SubsystemBase {
     upMotor.setInverted(false);
   }
 
+  public boolean noteIsOn(){
+    return noteSwitch.get();
+  }
+
   private void initShuffleboard() {
-    ShuffleBoardClass.getSensors().add("Note Inside", !load);
-    ShuffleBoardClass.getSensors().add("Note Is On?", on);
+    ShuffleBoardClass.getSensors().add("Note Is On?", noteIsOn());
   }
 
 }

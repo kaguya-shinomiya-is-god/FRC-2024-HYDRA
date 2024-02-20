@@ -1,6 +1,5 @@
 
 package frc.robot;
-import java.util.Set;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -9,10 +8,11 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Commands.AutoLocomotion.ATFinder;
+import frc.robot.Commands.AutoLocomotion.AutoMove;
 import frc.robot.Commands.AutoLocomotion.AutoSequence;
+import frc.robot.Commands.AutoLocomotion.NoteCollector;
 import frc.robot.Commands.Joysticks.*;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.ScoreSystem.*;
@@ -81,13 +81,25 @@ public class RobotContainer {
     return autoCommand();
   }
 
+  private Command autoCommand(){
+    return new SequentialCommandGroup(new ATFinder(lime, robotDrive),
+                                      getCaptureAuto(1));
+  }
+
+  //Comandos Teleoperado
+
   private ParallelCommandGroup getCaptureCommand(){
     return new ParallelCommandGroup(new InstantCommand(() -> capture.getNote()),
                                       new InstantCommand(() -> shooter.launcherCapSync()));
   }
 
-  private Command autoCommand(){
-    return new SequentialCommandGroup(new ATFinder(lime, robotDrive));
+  //Comandos Autonomo
+
+  private ParallelCommandGroup getCaptureAuto(double distance){
+    return new ParallelCommandGroup(new NoteCollector(capture), 
+                                    new AutoMove(robotDrive, distance));
   }
+
+  
 
 }

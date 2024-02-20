@@ -6,21 +6,20 @@ import frc.robot.LimelightHelpers;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Subsystems.Sensors.LimelightSubsystem;
 
-public class ATFinder extends CommandBase{
-    private LimelightSubsystem lime;
-    private DriveSubsystem drive;
-    private boolean find = false;
+public class NoteFinder extends CommandBase{
+    DriveSubsystem driver;
+    LimelightSubsystem lime;
+    boolean find = false;
 
-    public ATFinder(LimelightSubsystem limeSub, DriveSubsystem driveSub){
-        this.lime = limeSub;
-        this.drive = driveSub;
-
-        addRequirements(lime,drive);
+    public NoteFinder(DriveSubsystem driver, LimelightSubsystem lime){
+        this.lime = lime;
+        this.driver = driver;
+        addRequirements(driver,lime);
     }
 
     @Override
     public void initialize(){
-        LimelightHelpers.setPipelineIndex("AprilTags", 1);
+        LimelightHelpers.setPipelineIndex("Python", 2);
     }
 
     @Override
@@ -28,17 +27,18 @@ public class ATFinder extends CommandBase{
         find = lime.getTargetLime();
 
         if(!find)
-            drive.motorPower(Constants.kNormalSpd, -Constants.kNormalSpd);
+            driver.motorPower(Constants.kNormalSpd, -Constants.kNormalSpd);
 
     }
 
     @Override
     public void end(boolean interrupted){
-        drive.motorPower(0, 0);
+        driver.motorPower(0, 0);
     }
 
     @Override
-    public boolean isFinished(){
+    public boolean isFinished() {
+        // TODO Auto-generated method stub
         return find;
     }
 }

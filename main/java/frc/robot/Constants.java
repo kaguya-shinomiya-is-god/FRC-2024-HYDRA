@@ -1,6 +1,5 @@
 package frc.robot;
 
-import java.util.Optional;
 
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
