@@ -3,12 +3,12 @@ package frc.robot.Commands.AutoLocomotion;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 import frc.robot.Utils.SystemDriver;
 
-public class AutoAngleEncoder extends CommandBase {
+public class AutoAngleEncoder extends Command {
     private PIDController pid = new PIDController(Constants.AUTOANGLE_kP,
             Constants.AUTOANGLE_kI, Constants.AUTOANGLE_kD);
     private DriveSubsystem drive;

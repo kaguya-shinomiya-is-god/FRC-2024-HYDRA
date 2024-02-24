@@ -3,7 +3,7 @@ package frc.robot.Subsystems.ScoreSystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -35,6 +35,7 @@ public class CaptureSubsytem extends SubsystemBase {
   public void getNote() {
     downMotor.set((0.3));
     upMotor.set(ControlMode.PercentOutput, (1));
+
   }
 
   public void spitNote() {
@@ -45,6 +46,7 @@ public class CaptureSubsytem extends SubsystemBase {
   public void getOff() {
     downMotor.set((0));
     upMotor.set(ControlMode.PercentOutput, (0));
+
   }
 
   private void initMotors() {

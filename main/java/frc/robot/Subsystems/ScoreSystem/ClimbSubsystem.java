@@ -57,7 +57,6 @@ public class ClimbSubsystem extends SubsystemBase{
     }
 
     private void initShuffleboard(){
-;
         ShuffleBoardClass.getSensors().add("Solenoid 1", sole1.get());
         ShuffleBoardClass.getSensors().add("Solenoid 2", sole2.get());
         ShuffleBoardClass.getSensors().add("AIR STATUS", sysdriver.whichSolenoidActivated(sideL,on));

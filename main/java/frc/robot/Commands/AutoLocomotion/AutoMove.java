@@ -2,11 +2,11 @@ package frc.robot.Commands.AutoLocomotion;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.Subsystems.Locomotion.DriveSubsystem;
 
-public class AutoMove extends CommandBase{
+public class AutoMove extends Command{
 
     private DriveSubsystem driver;
     private PIDController pid = new PIDController(Constants.AUTOMOVE_kP, Constants.AUTOMOVE_kI, Constants.AUTOMOVE_kD);

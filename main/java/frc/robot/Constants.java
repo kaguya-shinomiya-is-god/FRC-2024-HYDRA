@@ -1,10 +1,7 @@
 package frc.robot;
 
-import java.util.Optional;
 
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 
 public final class Constants {
 
@@ -15,17 +12,17 @@ public final class Constants {
 
     //Error in `/usr/local/frc/JRE/bin/java': free(): invalid next size (fast): 0xa97e6ac0
 
-    public static final int MOTOR_ANG_ID = -1;
+    public static final int MOTOR_ANG_ID = 20;
 
 
-    public static final int MOTOR_DOWN1_LAUCHER_ID = 6;
-    public static final int MOTOR_DOWN2_LAUCHER_ID = 8;
+    public static final int MOTOR_DOWN1_LAUCHER_ID = 11;
+    public static final int MOTOR_DOWN2_LAUCHER_ID = 9;
     public static final int MOTOR_MEDIUM1_LAUCHER_ID = 7;
-    public static final int MOTOR_MEDIUM2_LAUCHER_ID = 10;
-    public static final int MOTOR_MEDIUM3_LAUCHER_ID = 9;
-    public static final int MOTOR_MEDIUM4_LAUCHER_ID = 12;
-    public static final int MOTOR_UP1_LAUNCHER_ID = 11;
-    public static final int MOTOR_UP2_LAUNCHER_ID = 13;
+    public static final int MOTOR_MEDIUM2_LAUCHER_ID = 12;
+    public static final int MOTOR_MEDIUM3_LAUCHER_ID = 8;
+    public static final int MOTOR_MEDIUM4_LAUCHER_ID = 13;
+    public static final int MOTOR_UP1_LAUNCHER_ID = 6;
+    public static final int MOTOR_UP2_LAUNCHER_ID = 10;
 
 
     public static final int MOTOR_DOWN_CAPTURE_ID = 14;
@@ -58,18 +55,18 @@ public final class Constants {
     public static final int RIGHT_STICK_X = 4;
     public static final int RIGHT_STICK_y = 5;
 
-    public static final double kFastSpd = 1;
+    public static final double kFastSpd = 0.6;
     public static final double kNormalSpd = 0.5;
     public static final double kSlowSpd = 0.25;
-    public static final double kShootSpd = 0.8;
+    public static final double kShootSpd = 1;
 
-    public int SpeakerAprilTag(){
-        if(DriverStation.getAlliance() == Alliance.Blue) 
-            return 7;
-        if(DriverStation.getAlliance() == Alliance.Red)
-            return 4;
-        return 0;
-    }
+    // public int SpeakerAprilTag(){
+    //     if(DriverStation.getAlliance() == Alliance.Blue) 
+    //         return 7;
+    //     if(DriverStation.getAlliance() == Alliance.Red)
+    //         return 4;
+    //     return 0;
+    // }
 
 
     public static final double AUTOANGLE_kP = 0.02;
