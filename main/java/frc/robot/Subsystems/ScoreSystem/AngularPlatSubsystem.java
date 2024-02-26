@@ -44,7 +44,7 @@ public class AngularPlatSubsystem extends SubsystemBase {
     }
 
     public void bruteSetOff() {
-        angMotor.set(-0.03);
+        angMotor.set(-0.015);
     }
 
 }

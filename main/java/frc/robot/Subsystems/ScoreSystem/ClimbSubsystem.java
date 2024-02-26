@@ -1,6 +1,9 @@
 package frc.robot.Subsystems.ScoreSystem;
 
 
+
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -16,7 +19,6 @@ public class ClimbSubsystem extends SubsystemBase{
     double pressure = 0;
     private SystemDriver sysdriver;
     private boolean sideL,on = false;
-
     public ClimbSubsystem(int channel_1, int channel_2){
         this.sole1 = new Solenoid(PneumaticsModuleType.REVPH,channel_1);
         this.sole2 = new Solenoid(PneumaticsModuleType.REVPH, channel_2);

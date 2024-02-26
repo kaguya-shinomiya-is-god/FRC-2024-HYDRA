@@ -1,5 +1,6 @@
 package frc.robot.Subsystems.ScoreSystem;
 
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkMax;
@@ -17,7 +18,7 @@ public class CaptureSubsytem extends SubsystemBase {
   VictorSPX upMotor;
   DigitalInput noteSwitch;
   private boolean on, load = false;
-
+  
   public CaptureSubsytem() {
     downMotor = new CANSparkMax(Constants.MOTOR_DOWN_CAPTURE_ID, MotorType.kBrushless);
     upMotor = new VictorSPX(Constants.MOTOR_UP_CAPTURE_ID);

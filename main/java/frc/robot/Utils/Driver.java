@@ -98,12 +98,12 @@ public class Driver {
         mL = seno_left * mag_left;
       } else if (leftStick_x < 0 && leftStick_y < 0) {
         SmartDashboard.putString("Condicao", "leftStick_x<0 && leftStick_y<0");
-        mR = seno_left * mag_left;
-        mL = -mag_left;
-      } else if (leftStick_x >= 0 && leftStick_y < 0) {
-        SmartDashboard.putString("Condicao", "leftStick_x>=0 && leftStick_y<0");
         mR = -mag_left;
         mL = seno_left * mag_left;
+      } else if (leftStick_x >= 0 && leftStick_y < 0) {
+        SmartDashboard.putString("Condicao", "leftStick_x>=0 && leftStick_y<0");
+        mR = seno_left * mag_left;
+        mL = -mag_left;
       }
     } else if (mag_right != 0) {
       if (rightStick_x >= 0 && rightStick_y >= 0) {
@@ -116,12 +116,12 @@ public class Driver {
         mL = -mag_right;
       } else if (rightStick_x < 0 && rightStick_y < 0) {
         SmartDashboard.putString("Condicao", "rightStick_x<0 && rightStick_y<0");
-        mR = mag_right;
-        mL = -seno_right * mag_right;
-      } else if (rightStick_x >= 0 && rightStick_y < 0) {
-        SmartDashboard.putString("Condicao", "rightStick_x<0 && rightStick_y<0");
         mR = -seno_right * mag_right;
         mL = mag_right;
+      } else if (rightStick_x >= 0 && rightStick_y < 0) {
+        SmartDashboard.putString("Condicao", "rightStick_x<0 && rightStick_y<0");
+        mR = mag_right;
+        mL = -seno_right * mag_right;
       }
     }
 
